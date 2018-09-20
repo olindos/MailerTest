@@ -1,24 +1,21 @@
-# README
+# Test task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Иногда менеджерам требуется составлять шаблоны писем с динамическими данными. 
+Поэтому требуется разработать сервис, который позволит создавать и хранить шаблоны, а также отправлять письма на их основе.
 
-Things you may want to cover:
+### Данные:
 
-* Ruby version
+```ruby
+Account(balance:float currency:string name:string email:string)
+Message(title:string, text:text)
+```
 
-* System dependencies
+### Пример сообщения:
+```html
+"Здравствуйте, {{name}}. Ваш баланс: {{balance}}{{currency}}".
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Пример отправки:
+```ruby
+AccountMailer.notify(@message, @account).deliver_now
+```
